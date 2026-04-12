@@ -38,6 +38,8 @@ export function TrackerProvider({ children }) {
   const [filterDifficulty, setFilterDifficulty] = useState("All");
   const [filterStatus, setFilterStatus] = useState("All");
   const [searchQuery, setSearchQuery] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
+  const [highlightedQuestionId, setHighlightedQuestionId] = useState(null);
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify([...solvedSet]));
@@ -99,7 +101,11 @@ export function TrackerProvider({ children }) {
     };
   }, [solvedSet, notesSet, revisionSet]);
 
-  const allQuestions = dsaData.flatMap((s) => s.questions);
+  // Flatten all questions across all steps and subTopics
+  const allQuestions = dsaData.flatMap((s) =>
+    s.subTopics.flatMap((st) => st.questions)
+  );
+
   const totalCount = allQuestions.length;
   const solvedCount = allQuestions.filter((q) => solvedSet.has(q.id)).length;
   const easyCount = allQuestions.filter((q) => q.difficulty === "Easy").length;
@@ -108,6 +114,13 @@ export function TrackerProvider({ children }) {
   const easySolved = allQuestions.filter((q) => q.difficulty === "Easy" && solvedSet.has(q.id)).length;
   const mediumSolved = allQuestions.filter((q) => q.difficulty === "Medium" && solvedSet.has(q.id)).length;
   const hardSolved = allQuestions.filter((q) => q.difficulty === "Hard" && solvedSet.has(q.id)).length;
+
+  // Pick a random unsolved question
+  const pickRandom = useCallback(() => {
+    const unsolved = allQuestions.filter((q) => !solvedSet.has(q.id));
+    if (unsolved.length === 0) return null;
+    return unsolved[Math.floor(Math.random() * unsolved.length)];
+  }, [allQuestions, solvedSet]);
 
   const value = {
     dsaData,
@@ -126,6 +139,11 @@ export function TrackerProvider({ children }) {
     setFilterStatus,
     searchQuery,
     setSearchQuery,
+    activeTab,
+    setActiveTab,
+    pickRandom,
+    highlightedQuestionId,
+    setHighlightedQuestionId,
     stats: { totalCount, solvedCount, easyCount, mediumCount, hardCount, easySolved, mediumSolved, hardSolved },
   };
 

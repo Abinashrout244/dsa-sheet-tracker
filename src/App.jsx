@@ -4,45 +4,34 @@ import ProgressDashboard from "./components/ProgressDashboard";
 import FilterBar from "./components/FilterBar";
 import Section from "./components/Section";
 
-function EmptyState() {
-  return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 text-center">
-      <div className="text-6xl mb-4">🔍</div>
-      <h3 className="text-slate-300 text-lg font-semibold mb-2">No problems found</h3>
-      <p className="text-slate-500 text-sm">Try adjusting your filters or search query.</p>
-    </div>
-  );
-}
-
 function TrackerContent() {
-  const { dsaData, filterDifficulty, filterStatus, searchQuery } = useTracker();
-
-  const hasAnyVisible = dsaData.some((section) =>
-    section.questions.some((q) => {
-      if (filterDifficulty !== "All" && q.difficulty !== filterDifficulty) return false;
-      if (filterStatus === "Solved") return false; // temporarily; Section handles real filtering
-      if (searchQuery && !q.title.toLowerCase().includes(searchQuery.toLowerCase())) return false;
-      return true;
-    })
-  );
+  const { dsaData } = useTracker();
 
   return (
-    <div className="min-h-screen bg-slate-950 font-inter">
+    <div className="min-h-screen bg-[#0f0f23] font-inter">
       <Header />
-      <main className="pt-2 pb-16">
+      <main className="pt-3 pb-16">
         <ProgressDashboard />
         <FilterBar />
-        <div className="flex flex-col gap-0">
+        <div>
           {dsaData.map((section) => (
             <Section key={section.id} section={section} />
           ))}
         </div>
       </main>
 
-      {/* Footer */}
-      <footer className="border-t border-slate-800 py-6 text-center">
-        <p className="text-slate-600 text-sm">
-          Built with ❤️ · DSA Sheet Tracker · Inspired by Striver A2Z
+      <footer className="border-t border-[#0f0f28] py-5 text-center">
+        <p className="text-[#333355] text-xs">
+          Built with ❤️ by{" "}
+          <span className="text-[#a5b4fc] font-semibold">Abinash</span>
+          {" · "}
+          Inspired by{" "}
+          <a href="https://takeuforward.org/" target="_blank" rel="noopener noreferrer"
+            className="text-[#60a5fa] hover:text-[#93c5fd] hover:underline transition-colors font-medium">
+            TakeUForward
+          </a>
+          {" · "}
+          <span className="text-[#1e1e3a]">A2Z DSA Sheet Tracker 🚀</span>
         </p>
       </footer>
     </div>

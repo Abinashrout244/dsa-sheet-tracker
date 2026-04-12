@@ -1,16 +1,43 @@
-# React + Vite
+# DSA Tracking
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A personal Data Structures & Algorithms tracker built with React and Vite. This app is designed to help learners follow the A2Z DSA sheet journey, log solved problems, maintain revision notes, and visualize progress across difficulty levels.
 
-Currently, two official plugins are available:
+## Project motive
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+The primary goal of this project is to provide a simple but powerful study companion for DSA preparation:
 
-## React Compiler
+- Track solved problems from an A2Z-style DSA sheet
+- Mark questions as solved, add notes, and flag problems for revision
+- Filter and search questions by difficulty, status, or topic
+- Persist progress locally through `localStorage`
+- Import and export progress as JSON for backup or sharing
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- Progress dashboard with overall completion percentage
+- Difficulty breakdown for Easy / Medium / Hard problems
+- Search and filter by status, difficulty, and query text
+- Question sections grouped by DSA topic and subtopic
+- Import / export progress data in JSON format
+- Reset progress with a confirmation flow
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Getting started
+
+```bash
+npm install
+npm run dev
+```
+
+Then open the local Vite URL shown in your terminal.
+
+## Build
+
+```bash
+npm run build
+```
+
+## Notes
+
+- Progress is stored in the browser using `localStorage`
+- The app is inspired by the TakeUForward A2Z DSA sheet and built for tracking a DSA journey from zero to pro
+- The current implementation is a React + Vite frontend only
