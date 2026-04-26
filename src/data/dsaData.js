@@ -267,15 +267,16 @@ const dsaData = [
             difficulty: "Easy",
             link: "https://takeuforward.org/",
             articleLink: "https://takeuforward.org/",
-            youtubeLink: "https://www.youtube.com/",
+            youtubeLink: "https://youtu.be/KEs5UyBJ39g?si=45c9gLFl8DEFiWTN",
           },
           {
             id: 30,
             title: "Counting frequencies of array elements",
             difficulty: "Easy",
-            link: "https://takeuforward.org/",
-            articleLink: "https://takeuforward.org/",
-            youtubeLink: "https://www.youtube.com/",
+            link: "https://www.geeksforgeeks.org/dsa/counting-frequencies-of-array-elements/",
+            articleLink:
+              "https://www.geeksforgeeks.org/dsa/counting-frequencies-of-array-elements/",
+            youtubeLink: "https://youtu.be/KEs5UyBJ39g?si=45c9gLFl8DEFiWTN",
           },
           {
             id: 31,
@@ -283,7 +284,16 @@ const dsaData = [
             difficulty: "Easy",
             link: "https://takeuforward.org/",
             articleLink: "https://takeuforward.org/",
-            youtubeLink: "https://www.youtube.com/",
+            youtubeLink: "https://youtu.be/KEs5UyBJ39g?si=45c9gLFl8DEFiWTN",
+          },
+          {
+            id: 32,
+            title: " Count Elements With Maximum Frequency",
+            difficulty: "Easy",
+            link: "https://leetcode.com/problems/count-elements-with-maximum-frequency/description/",
+            articleLink:
+              "https://leetcode.com/problems/count-elements-with-maximum-frequency/editorial/",
+            youtubeLink: "",
           },
         ],
       },
